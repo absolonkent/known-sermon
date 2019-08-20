@@ -1,11 +1,11 @@
-Soccer for Known
+Sermon Notes for Known
 =================
 
-Adds support for publishing Soccer entries to the [Known CMS](http://withknown.com).
+Adds support for publishing sermon note entries to the [Known CMS](http://withknown.com).
 
 How to Install
 --------------
-- Add "Soccer" to your IdnoPlugins folder
+- Add "Sermon" to your IdnoPlugins folder
 - Copy all the files in there
 - Enable the plugin
 
