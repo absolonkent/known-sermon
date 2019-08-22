@@ -61,12 +61,13 @@
                 }
 
                 if (!$this->getSlug() && ($this->getID())) {
-                    return \Idno\Core\site()->config()->url . 'soccer/' . $this->getID() . '/' . $this->getPrettyURLTitle();
+                    return \Idno\Core\site()->config()->url . 'sermon/' . $this->getID() . '/' . $this->getPrettyURLTitle();
                 } else {
                     return parent::getURL();
                 }
 
             }
+            
 			function getScripture()
             {
 				if (!empty($this->scripture)) return $this->scripture;
@@ -76,6 +77,11 @@
             {
 				if (!empty($this->series)) return $this->series;
             }
+			function getChurchURL()
+            {
+				if (!empty($this->churchurl)) return $this->churchurl;
+            }
+			
 			
             /**
              * Sermon objects have type 'sermon'
@@ -124,6 +130,7 @@
 					$this->scripture	   = \Idno\Core\site()->currentPage()->getInput('scripture');
 					$this->series		   = \Idno\Core\site()->currentPage()->getInput('series');
 					$this->sermonURL		= \Idno\Core\site()->currentPage()->getInput('sermonURL');
+					$this->churchurl		= \Idno\Core\site()->currentPage()->getInput('churchurl');
 
 					$this->lat = $lat;
 					$this->long = $long;
@@ -205,7 +212,7 @@
                     if ($this->publish($new)) {
 
                         $autosave = new Autosave();
-                        $autosave->clearContext('soccer');
+                        $autosave->clearContext('sermon');
 
                         \Idno\Core\Webmention::pingMentions($this->getURL(), \Idno\Core\site()->template()->parseURLs($this->getTitle() . ' ' . $this->getDescription()));
 
