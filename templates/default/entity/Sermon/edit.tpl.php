@@ -26,6 +26,16 @@
     } else {
         $placename = $autosave->getValue('sermon', 'placename');
     }
+    if (!empty($vars['object']->churchurl)) {
+        $churchurl = $vars['object']->churchurl;
+    } else {
+        $churchurl = $autosave->getValue('sermon', 'churchurl');
+    }
+     if (!empty($vars['object']->sermonURL)) {
+        $sermonURL = $vars['object']->sermonURL;
+    } else {
+        $sermonURL = $autosave->getValue('sermon', 'sermonURL');
+    }
 	if (!empty($vars['object']->location)) {
         $placename = $vars['object']->location;
     } else {
@@ -108,10 +118,12 @@
 	
 					<label for="scripture">Scripture Passage</label>
                     <input type="text" name="scripture" id="scripture" placeholder="What was the main scripture passage?" value="<?= htmlspecialchars($scripture) ?>" class="form-control"/>
+
+					<label for="churchurl">Church Website Link</label>
+                    <input type="text" name="churchurl" id="churchurl" placeholder="http://" value="<?= htmlspecialchars($churchurl) ?>" class="form-control"/>                    
 	
 					<label for="scripture">Sermon Audio Link</label>
-                    <input type="text" name="sermonURL" id="sermonURL" placeholder="Sermon Audio Link" value="<?= htmlspecialchars($sermonURL) ?>" class="form-control"/>                    
-	
+                    <input type="text" name="sermonURL" id="sermonURL" placeholder="http://" value="<?= htmlspecialchars($sermonURL) ?>" class="form-control"/>
 	
             <div id="geoplaceholder">
                 <p style="text-align: center; color: #4c93cb;">
