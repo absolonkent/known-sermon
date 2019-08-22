@@ -31,9 +31,9 @@
 <?php if (!empty($vars['object']->getSermonDate())) {?>
 			<div class=""><p><span class="fa fa-calendar"></span> Sermon Date and Time: <?= htmlentities(strip_tags($vars['object']->getSermonDate()), ENT_QUOTES, 'UTF-8'); ?></span></p></div>
 <?php } ?>
-			
+
 <?php if (!empty($vars['object']->getPlaceName())) {?>
-			<div class=""><p><span class="fa fa-map-marker"></span> Location: <?= htmlentities(strip_tags($vars['object']->getPlaceName()), ENT_QUOTES, 'UTF-8'); ?></span></p></div>
+			<div class=""><p><span class="fa fa-map-marker"></span> Location: <a href="<?= $vars['object']->getChurchURL() ?>" class="p-name"><?= htmlentities(strip_tags($vars['object']->getPlaceName()), ENT_QUOTES, 'UTF-8'); ?></a></span></p></div>
 <?php } ?>
 
 <?php if (!empty($vars['object']->getLocation())) {?>
@@ -74,7 +74,7 @@
                 // Patch to correct certain broken URLs caused by https://github.com/idno/known/issues/526
                 $src = preg_replace('/^(https?:\/\/\/)/', \Idno\Core\site()->config()->getDisplayURL(), $src);
                 $mainsrc = preg_replace('/^(https?:\/\/\/)/', \Idno\Core\site()->config()->getDisplayURL(), $mainsrc);
-                
+
                 ?>
                 <p style="text-align: center">
                     <a href="<?= $this->makeDisplayURL($mainsrc) ?>"><img src="<?= $this->makeDisplayURL($src) ?>" class="u-photo"/></a>
