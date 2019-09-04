@@ -3,8 +3,7 @@
         if (\Idno\Core\site()->template()->getTemplateType() == 'default') {
             ?>
             <h2 class="p-name"><span class="fa fa-globe-e"></span> 
-                <a class="u-url" href="<?= $vars['object']->getDisplayURL() ?>">Sermon Notes for <?= htmlentities(strip_tags($vars['object']->getTitle()), ENT_QUOTES, 'UTF-8'); ?>
-                </a>
+                <a class="u-url" href="<?= $vars['object']->getDisplayURL() ?>">Sermon Notes for "<i><?= htmlentities(strip_tags($vars['object']->getTitle()), ENT_QUOTES, 'UTF-8'); ?></i>" </a>
 			<span class="h-geo">
 				<data class="p-latitude" value="<?= $object->lat ?>"></data>
 				<data class="p-longitude" value="<?= $object->long ?>"></data>
@@ -22,7 +21,9 @@
 			<div class=""><p><span class="fa fa-male"></span> Speaker: <?= htmlentities(strip_tags($vars['object']->getSpeaker()), ENT_QUOTES, 'UTF-8'); ?></span></p></div>
 <?php } ?>
 
-<p><span><i class="fas fa-play-circle-o"></i></span> Listen to <a href="<?= $vars['object']->getSermonURL() ?>" class="p-name"><?= htmlentities(strip_tags($vars['object']->getTitle()), ENT_QUOTES, 'UTF-8'); ?></a></p>
+<?php if (!empty($vars['object']->getSermonURL())) {?>
+			<div class=""><p><span class="fas fa-play-circle-o"> </span> Listen to "<i><a href="<?= $vars['object']->getSermonURL() ?>" class="p-name"><?= htmlentities(strip_tags($vars['object']->getTitle()), ENT_QUOTES, 'UTF-8'); ?></a></span></p></div>
+<?php } ?>
 
 <?php if (!empty($vars['object']->getScripture())) {?>
 			<div class=""><p><span class="fa fa-bookmark-o"></span> Key Scripture: <?= htmlentities(strip_tags($vars['object']->getScripture()), ENT_QUOTES, 'UTF-8'); ?></span></p></div>
